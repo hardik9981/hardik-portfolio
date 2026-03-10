@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hardik Kumar — Developer Portfolio</title>
+  <meta name="description" content="Hardik Kumar | Frontend Developer, UI/UX Designer & Cybersecurity Engineer. B.Tech Student at Centurion University." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@300;400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#07090f;--bg2:#0d1117;--bg3:#111827;--surface:#161d2b;--surface2:#1e2a3a;
+      --border:rgba(99,102,241,0.18);--purple:#6366f1;--purple2:#818cf8;
+      --green:#22c55e;--green2:#4ade80;--cyan:#06b6d4;
+      --text:#f1f5f9;--text2:#94a3b8;--text3:#64748b;
+      --glow:0 0 40px rgba(99,102,241,0.25);--glow-g:0 0 40px rgba(34,197,94,0.2);
+      --radius:12px;--radius2:20px;
+    }
+    html{scroll-behavior:smooth}
+    body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6}
+    ::selection{background:rgba(99,102,241,0.35);color:#fff}
+    ::-webkit-scrollbar{width:6px}
+    ::-webkit-scrollbar-track{background:var(--bg2)}
+    ::-webkit-scrollbar-thumb{background:var(--purple);border-radius:3px}
+
+    /* NAVBAR */
+    nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:1rem 4rem;background:rgba(7,9,15,0.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:padding 0.3s}
+    nav.scrolled{padding:.75rem 4rem}
+    .nav-logo{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800;background:linear-gradient(135deg,var(--purple),var(--green));-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-decoration:none}
+    .nav-links{display:flex;gap:2rem;list-style:none}
+    .nav-links a{color:var(--text2);text-decoration:none;font-family:'JetBrains Mono',monospace;font-size:.82rem;letter-spacing:.03em;transition:color .2s;position:relative}
+    .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--purple);border-radius:2px;transition:width .3s}
+    .nav-links a:hover{color:var(--text)}
+    .nav-links a:hover::after{width:100%}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+    .hamburger span{display:block;width:24px;height:2px;background:var(--text);border-radius:2px;transition:.3s}
+    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .hamburger.open span:nth-child(2){opacity:0}
+    .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(7,9,15,.98);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:2rem}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:700;color:var(--text);text-decoration:none;transition:color .2s}
+    .mobile-menu a:hover{color:var(--purple2)}
+
+    /* HERO */
+    #hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:6rem 2rem 4rem}
+    .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(99,102,241,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(99,102,241,.05) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 60% at 50% 50%,black 40%,transparent 100%)}
+    .orb{position:absolute;border-radius:50%;filter:blur(80px);animation:float 8s ease-in-out infinite;pointer-events:none}
+    .orb1{width:500px;height:500px;background:rgba(99,102,241,.12);top:-100px;left:-100px}
+    .orb2{width:400px;height:400px;background:rgba(34,197,94,.08);bottom:-80px;right:-80px;animation-delay:-4s}
+    .orb3{width:300px;height:300px;background:rgba(6,182,212,.06);top:40%;left:50%;animation-delay:-2s}
+    @keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(20px,-20px) scale(1.03)}66%{transform:translate(-15px,15px) scale(.97)}}
+    #particles{position:absolute;inset:0;pointer-events:none}
+    .hero-inner{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;gap:2rem;text-align:center;max-width:760px}
+    .hero-avatar-wrap{position:relative;width:180px;height:180px}
+    .hero-avatar-ring{position:absolute;inset:-8px;border-radius:50%;background:conic-gradient(from 0deg,var(--purple),var(--green),var(--cyan),var(--purple));animation:spin 4s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .hero-avatar-ring::before{content:'';position:absolute;inset:3px;border-radius:50%;background:var(--bg)}
+    .hero-avatar{position:relative;z-index:1;width:180px;height:180px;border-radius:50%;overflow:hidden;display:flex;justify-content:center;align-items:center;margin-bottom:20px}
+    .avatar-circle{width:180px;height:180px;border-radius:50%;overflow:hidden;border:4px solid rgba(0,255,200,0.35);box-shadow:0 0 45px rgba(0,255,200,0.35);position:relative}
+    .avatar-circle img{width:100%;height:100%;object-fit:cover;object-position:center;display:block}
+    .avatar-placeholder{width:100%;height:100%;background:linear-gradient(135deg,var(--surface2),var(--surface));display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:3rem;font-weight:800;color:var(--purple2)}
+    .hero-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem 1rem;background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.25);border-radius:100px;font-family:'JetBrains Mono',monospace;font-size:.76rem;color:var(--purple2);letter-spacing:.05em}
+    .badge-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse-dot 2s infinite}
+    @keyframes pulse-dot{0%,100%{box-shadow:0 0 0 0 rgba(34,197,94,.6)}50%{box-shadow:0 0 0 6px transparent}}
+    .hero-name{font-family:'Syne',sans-serif;font-size:clamp(2.8rem,7vw,5rem);font-weight:800;line-height:1.1;background:linear-gradient(135deg,#fff 0%,var(--text2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .hero-typed-wrap{font-family:'JetBrains Mono',monospace;font-size:clamp(1rem,2.5vw,1.4rem);color:var(--purple2);min-height:2.2em;display:flex;align-items:center;justify-content:center;gap:2px}
+    #typed-text{color:var(--green2)}
+    .cursor-blink{display:inline-block;width:2px;height:1.2em;background:var(--purple2);animation:blink .75s step-end infinite;vertical-align:middle;margin-left:1px}
+    @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+    .hero-desc{color:var(--text2);font-size:1.05rem;max-width:500px;line-height:1.7}
+    .hero-btns{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center}
+    .btn{padding:.8rem 1.8rem;border-radius:8px;font-family:'DM Sans',sans-serif;font-weight:500;font-size:.95rem;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;transition:all .25s;border:none;outline:none}
+    .btn-primary{background:var(--purple);color:#fff;box-shadow:0 4px 24px rgba(99,102,241,.35)}
+    .btn-primary:hover{background:var(--purple2);transform:translateY(-2px);box-shadow:0 8px 32px rgba(99,102,241,.45)}
+    .btn-outline{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.15)}
+    .btn-outline:hover{border-color:var(--purple);color:var(--purple2);transform:translateY(-2px)}
+    .btn-green{background:rgba(34,197,94,.12);color:var(--green2);border:1px solid rgba(34,197,94,.25)}
+    .btn-green:hover{background:rgba(34,197,94,.2);transform:translateY(-2px)}
+
+    /* SECTIONS */
+    section{padding:6rem 2rem}
+    .container{max-width:1100px;margin:0 auto}
+    .section-tag{display:inline-flex;align-items:center;gap:.5rem;font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--green);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.75rem}
+    .section-tag::before{content:'//';color:var(--text3)}
+    .section-title{font-family:'Syne',sans-serif;font-size:clamp(2rem,5vw,3rem);font-weight:800;line-height:1.2;margin-bottom:1rem}
+    .section-title span{color:var(--purple2)}
+    .divider{width:60px;height:3px;background:linear-gradient(90deg,var(--purple),var(--green));border-radius:2px;margin-bottom:3rem}
+
+    /* ABOUT */
+    #about{background:var(--bg2)}
+    .about-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:4rem;align-items:center}
+    .about-img-wrap{position:relative}
+    .about-img-card{width:100%;max-width:340px;aspect-ratio:3/4;border-radius:var(--radius2);overflow:hidden;border:1px solid var(--border);position:relative}
+    .about-img-card::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,transparent 50%,rgba(99,102,241,.15))}
+    .about-img-placeholder{width:100%;height:100%;background:linear-gradient(135deg,var(--surface) 0%,var(--surface2) 100%);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1rem;color:var(--text3)}
+    .about-img-placeholder i{font-size:4rem;color:var(--purple2);opacity:.4}
+    .about-deco{position:absolute;width:120px;height:120px;border:2px solid rgba(99,102,241,.2);border-radius:var(--radius);bottom:-20px;right:-20px}
+    .about-deco2{position:absolute;width:60px;height:60px;background:var(--green);border-radius:50%;opacity:.08;top:-15px;left:-15px}
+    .about-text p{color:var(--text2);font-size:1.05rem;line-height:1.8;margin-bottom:1.25rem}
+    .about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}
+    .stat-box{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;text-align:center}
+    .stat-box .num{font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:800;background:linear-gradient(135deg,var(--purple2),var(--green2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+    .stat-box .lbl{font-size:.78rem;color:var(--text3);margin-top:.2rem}
+
+    /* SKILLS */
+    .skills-categories{display:flex;flex-direction:column;gap:2.5rem}
+    .skill-cat-label{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--text3);letter-spacing:.08em;text-transform:uppercase;margin-bottom:1rem}
+    .skill-cards{display:flex;flex-wrap:wrap;gap:1rem}
+    .skill-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.4rem;display:flex;align-items:center;gap:.75rem;cursor:default;transition:all .25s;position:relative;overflow:hidden}
+    .skill-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(99,102,241,.06),transparent);opacity:0;transition:opacity .25s}
+    .skill-card:hover{border-color:var(--purple);transform:translateY(-4px);box-shadow:var(--glow)}
+    .skill-card:hover::before{opacity:1}
+    .skill-icon{width:38px;height:38px;border-radius:8px;background:rgba(99,102,241,.12);display:flex;align-items:center;justify-content:center;font-size:1.15rem}
+    .skill-name{font-weight:500;font-size:.95rem}
+    .skill-sub{font-size:.74rem;color:var(--text3)}
+
+    /* PROJECTS */
+    #projects{background:var(--bg2)}
+    .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem}
+    .project-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius2);padding:1.75rem;display:flex;flex-direction:column;gap:1rem;transition:all .3s ease;position:relative;overflow:hidden;cursor:default}
+    .project-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--purple),var(--green));transform:scaleX(0);transition:transform .3s ease}
+    .project-card:hover{border-color:rgba(99,102,241,.4);transform:translateY(-8px);box-shadow:0 20px 60px rgba(0,0,0,.4),var(--glow)}
+    .project-card:hover::before{transform:scaleX(1)}
+    .project-card:hover .project-icon{transform:scale(1.05)}
+    .project-card-top{display:flex;align-items:flex-start;justify-content:space-between}
+    .project-icon{width:48px;height:48px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;transition:transform .3s ease}
+    .proj-purple{background:rgba(99,102,241,.15)}
+    .proj-green{background:rgba(34,197,94,.12)}
+    .proj-cyan{background:rgba(6,182,212,.12)}
+    .proj-rose{background:rgba(244,63,94,.12)}
+    .proj-amber{background:rgba(245,158,11,.12)}
+    .project-status{font-family:'JetBrains Mono',monospace;font-size:.7rem;padding:.25rem .7rem;border-radius:100px}
+    .status-done{background:rgba(34,197,94,.12);color:var(--green2);border:1px solid rgba(34,197,94,.2)}
+    .status-wip{background:rgba(245,158,11,.12);color:#fbbf24;border:1px solid rgba(245,158,11,.2)}
+    .project-title{font-family:'Syne',sans-serif;font-size:1.15rem;font-weight:700}
+    .project-desc{color:var(--text2);font-size:.92rem;line-height:1.65;flex:1}
+    .project-tags{display:flex;flex-wrap:wrap;gap:.5rem}
+    .project-tag{font-family:'JetBrains Mono',monospace;font-size:.72rem;padding:.2rem .6rem;border-radius:4px;background:rgba(99,102,241,.08);color:var(--purple2);border:1px solid rgba(99,102,241,.15)}
+    .project-link{display:inline-flex;align-items:center;gap:.5rem;color:var(--text2);text-decoration:none;font-size:.88rem;transition:color .2s}
+    .project-link:hover{color:var(--purple2)}
+
+    /* EDUCATION */
+    .timeline{position:relative;padding-left:2rem}
+    .timeline::before{content:'';position:absolute;left:0;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--purple),var(--green));border-radius:2px}
+    .timeline-item{position:relative;margin-bottom:3rem}
+    .timeline-dot{position:absolute;left:-2.5rem;top:.25rem;width:16px;height:16px;border-radius:50%;background:var(--purple);border:3px solid var(--bg);box-shadow:0 0 0 2px var(--purple)}
+    .timeline-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius2);padding:1.75rem;transition:transform .25s,box-shadow .25s}
+    .timeline-card:hover{transform:translateX(6px);box-shadow:var(--glow)}
+    .timeline-year{font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--purple2);margin-bottom:.5rem}
+    .timeline-degree{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:700;margin-bottom:.25rem}
+    .timeline-institute{color:var(--text2);margin-bottom:.75rem}
+    .timeline-grade{display:inline-flex;align-items:center;gap:.5rem;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--green2);background:rgba(34,197,94,.08);border:1px solid rgba(34,197,94,.2);padding:.3rem .8rem;border-radius:100px}
+
+    /* CERTIFICATIONS */
+    #certifications{background:var(--bg2)}
+    .cert-cards{display:flex;flex-wrap:wrap;gap:1.5rem}
+    .cert-card{flex:1;min-width:260px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius2);padding:1.75rem;display:flex;align-items:center;gap:1.25rem;transition:all .25s}
+    .cert-card:hover{border-color:var(--purple);transform:translateY(-4px);box-shadow:var(--glow)}
+    .cert-icon{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,rgba(99,102,241,.2),rgba(34,197,94,.1));display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0}
+    .cert-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem}
+    .cert-meta{font-size:.82rem;color:var(--text3);margin-top:.2rem}
+
+    /* ACHIEVEMENTS */
+    .achieve-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem}
+    .achieve-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius2);padding:1.75rem;display:flex;align-items:flex-start;gap:1rem;transition:all .25s}
+    .achieve-card:hover{border-color:var(--green);transform:translateY(-4px);box-shadow:var(--glow-g)}
+    .achieve-emoji{font-size:2rem;flex-shrink:0;line-height:1}
+    .achieve-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.05rem}
+    .achieve-desc{color:var(--text2);font-size:.88rem;margin-top:.25rem}
+
+    /* CONTACT */
+    #contact{background:var(--bg2)}
+    .contact-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:4rem}
+    .contact-info{display:flex;flex-direction:column;gap:1.5rem}
+    .contact-heading{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:700;color:var(--text2);margin-bottom:.5rem}
+    .contact-link-btn{display:flex;align-items:center;gap:1rem;padding:1rem 1.25rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);text-decoration:none;color:var(--text);transition:all .25s}
+    .contact-link-btn:hover{border-color:var(--purple);transform:translateX(6px);box-shadow:var(--glow)}
+    .contact-link-icon{width:42px;height:42px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+    .icon-phone{background:rgba(34,197,94,.12);color:var(--green2)}
+    .icon-email{background:rgba(99,102,241,.12);color:var(--purple2)}
+    .icon-gh{background:rgba(241,245,249,.08);color:var(--text)}
+    .contact-link-text .title{font-weight:500}
+    .contact-link-text .val{font-size:.85rem;color:var(--text3);margin-top:.1rem}
+    .contact-form{display:flex;flex-direction:column;gap:1.25rem}
+    .form-group{display:flex;flex-direction:column;gap:.5rem}
+    .form-label{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--text3);letter-spacing:.05em}
+    .form-input,.form-textarea{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.85rem 1rem;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.95rem;outline:none;transition:border-color .2s,box-shadow .2s;resize:none;width:100%}
+    .form-input:focus,.form-textarea:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(99,102,241,.12)}
+    .form-textarea{min-height:130px}
+    .form-submit{display:flex;align-items:center;gap:.5rem;background:var(--purple);color:#fff;border:none;border-radius:var(--radius);padding:.9rem 1.8rem;font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:600;cursor:pointer;transition:all .25s;box-shadow:0 4px 20px rgba(99,102,241,.3);align-self:flex-start}
+    .form-submit:hover{background:var(--purple2);transform:translateY(-2px);box-shadow:0 8px 30px rgba(99,102,241,.4)}
+    .form-submit:disabled{opacity:.6;cursor:not-allowed;transform:none}
+    #form-status{font-size:.9rem;padding:.75rem 1rem;border-radius:var(--radius);display:none}
+    #form-status.success{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.2);color:var(--green2)}
+    #form-status.error{background:rgba(244,63,94,.1);border:1px solid rgba(244,63,94,.2);color:#fb7185}
+
+    /* FOOTER */
+    footer{background:var(--bg);border-top:1px solid var(--border);padding:2.5rem 2rem;text-align:center}
+    .footer-links{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;margin-bottom:1.5rem}
+    .footer-links a{color:var(--text3);text-decoration:none;font-size:.9rem;display:flex;align-items:center;gap:.4rem;transition:color .2s}
+    .footer-links a:hover{color:var(--purple2)}
+    .footer-copy{color:var(--text3);font-size:.85rem;line-height:1.7}
+    .footer-copy span{color:var(--purple2)}
+
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+    .reveal.visible{opacity:1;transform:translateY(0)}
+    .reveal-left{opacity:0;transform:translateX(-30px);transition:opacity .7s ease,transform .7s ease}
+    .reveal-left.visible{opacity:1;transform:translateX(0)}
+    .reveal-right{opacity:0;transform:translateX(30px);transition:opacity .7s ease,transform .7s ease}
+    .reveal-right.visible{opacity:1;transform:translateX(0)}
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+      nav{padding:1rem 2rem}
+      nav.scrolled{padding:.75rem 2rem}
+      .nav-links{display:none}
+      .hamburger{display:flex}
+      .about-grid,.contact-grid{grid-template-columns:1fr}
+      .about-img-wrap{display:flex;justify-content:center}
+    }
+    @media(max-width:600px){
+      section{padding:4rem 1.25rem}
+      .hero-btns{flex-direction:column;align-items:center}
+      .projects-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">HK</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#achievements">Awards</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#about" onclick="closeMobile()">About</a>
+  <a href="#skills" onclick="closeMobile()">Skills</a>
+  <a href="#projects" onclick="closeMobile()">Projects</a>
+  <a href="#education" onclick="closeMobile()">Education</a>
+  <a href="#certifications" onclick="closeMobile()">Certs</a>
+  <a href="#achievements" onclick="closeMobile()">Awards</a>
+  <a href="#contact" onclick="closeMobile()">Contact</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid"></div>
+  <div class="orb orb1"></div>
+  <div class="orb orb2"></div>
+  <div class="orb orb3"></div>
+  <canvas id="particles"></canvas>
+  <div class="hero-inner">
+    <div class="hero-avatar-wrap">
+      <div class="hero-avatar-ring"></div>
+      <div class="hero-avatar">
+        <div class="avatar-circle">
+          <img src="public/images/hardik2.jpg" alt="Hardik Kumar">
+        </div>
+      </div>
+    </div>
+    <div class="hero-badge">
+      <span class="badge-dot"></span>
+      Available for Internships &amp; Projects
+    </div>
+    <h1 class="hero-name">Hardik Kumar</h1>
+    <div class="hero-typed-wrap">
+      <span style="color:var(--text3)">_&nbsp;</span>
+      <span id="typed-text"></span>
+      <span class="cursor-blink"></span>
+    </div>
+    <p class="hero-desc">B.Tech student building at the intersection of <em>Cybersecurity</em>, <em>Web Development</em>, and <em>UI/UX Design</em>. Based in Gajapati, Odisha, India.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn btn-primary"><i class="fas fa-code"></i> View Projects</a>
+      <a href="#contact" class="btn btn-outline"><i class="fas fa-envelope"></i> Contact Me</a>
+      <a href="cv.pdf" download class="btn btn-green"><i class="fas fa-download"></i> Download CV</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap reveal-left">
+        <div class="about-img-card">
+          <img src="public/images/hardik.jpg" alt="Hardik Kumar" style="width:100%;height:100%;object-fit:cover;object-position:top;">
+        </div>
+        <div class="about-deco"></div>
+        <div class="about-deco2"></div>
+      </div>
+      <div class="about-text reveal-right">
+        <div class="section-tag">About Me</div>
+        <h2 class="section-title">Who I <span>Am</span></h2>
+        <div class="divider"></div>
+        <p>Hey there! I'm Hardik Kumar, a passionate B.Tech student at Centurion University of Technology and Management, on an exciting journey through Computer Science.</p>
+        <p>I thrive at the crossroads of <strong style="color:var(--purple2)">Cybersecurity</strong>, <strong style="color:var(--green2)">Web Development</strong>, and <strong style="color:var(--cyan)">UI/UX Design</strong>. I love building practical solutions that solve real-world problems — from security tools to intuitive web experiences.</p>
+        <p>When I'm not coding, you'll find me exploring the latest in cybersecurity research, participating in hackathons, or refining my design skills in Figma.</p>
+        <div class="about-stats">
+          <div class="stat-box"><div class="num">5+</div><div class="lbl">Projects</div></div>
+          <div class="stat-box"><div class="num">6.9</div><div class="lbl">CGPA</div></div>
+          <div class="stat-box"><div class="num">2+</div><div class="lbl">Awards</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="container">
+    <div class="reveal">
+      <div class="section-tag">Technical Skills</div>
+      <h2 class="section-title">My <span>Toolkit</span></h2>
+      <div class="divider"></div>
+    </div>
+    <div class="skills-categories">
+      <div class="reveal">
+        <div class="skill-cat-label">Frontend Development</div>
+        <div class="skill-cards">
+          <div class="skill-card"><div class="skill-icon" style="color:#e34c26;font-weight:bold;font-size:.9rem"><i class="fab fa-html5"></i></div><div><div class="skill-name">HTML</div></div></div>
+          <div class="skill-card"><div class="skill-icon" style="color:#264de4;font-weight:bold;font-size:.9rem"><i class="fab fa-css3-alt"></i></div><div><div class="skill-name">CSS</div></div></div>
+          <div class="skill-card"><div class="skill-icon" style="color:#f7df1e;color:#f7df1e;font-size:1.1rem"><i class="fab fa-js"></i></div><div><div class="skill-name">JavaScript</div></div></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="skill-cat-label">Programming Languages</div>
+        <div class="skill-cards">
+          <div class="skill-card"><div class="skill-icon" style="color:#3776ab;font-size:1.1rem"><i class="fab fa-python"></i></div><div><div class="skill-name">Python</div></div></div>
+          <div class="skill-card"><div class="skill-icon" style="color:#b07219;font-size:1.1rem"><i class="fab fa-java"></i></div><div><div class="skill-name">Java</div></div></div>
+          <div class="skill-card"><div class="skill-icon" style="color:#a8b9cc;font-size:1.1rem"><i class="fas fa-code"></i></div><div><div class="skill-name">C</div></div></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="skill-cat-label">Tools</div>
+        <div class="skill-cards">
+          <div class="skill-card"><div class="skill-icon" style="color:#f05032;font-size:1.1rem"><i class="fab fa-git-alt"></i></div><div><div class="skill-name">Git</div></div></div>
+          <div class="skill-card"><div class="skill-icon" style="color:#181717;font-size:1.1rem"><i class="fab fa-github"></i></div><div><div class="skill-name">GitHub</div></div></div>
+          <div class="skill-card"><div class="skill-icon" style="color:#007acc;font-size:1.1rem"><i class="fas fa-code"></i></div><div><div class="skill-name">VS Code</div></div></div>
+          <div class="skill-card"><div class="skill-icon" style="color:#0ACD83;font-size:1.1rem"><i class="fab fa-figma"></i></div><div><div class="skill-name">Figma</div></div></div>
+        </div>
+      </div>
+      <div class="reveal">
+        <div class="skill-cat-label">Database</div>
+        <div class="skill-cards">
+          <div class="skill-card"><div class="skill-icon" style="color:#00758f;font-size:1.1rem"><i class="fas fa-database"></i></div><div><div class="skill-name">MySQL</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="container">
+        <div class="reveal">
+          <div class="section-tag">Work</div>
+          <h2 class="section-title">Featured <span>Projects</span></h2>
+          <div class="divider"></div>
+        </div>
+        <div class="projects-grid">
+          <div class="project-card reveal">
+            <div class="project-card-top"><div class="project-icon proj-purple">🤟</div><span class="project-status status-done">Completed</span></div>
+            <div class="project-title">Sign Language Translator</div>
+            <div class="project-desc">A system that converts sign language gestures into readable text to bridge communication for hearing-impaired individuals. Uses computer vision to interpret hand gestures in real time.</div>
+            <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">Computer Vision</span><span class="project-tag">OpenCV</span></div>
+            <a href="https://github.com/hardik9981/sign-language-translator-ai" target="_blank" class="project-link"><i class="fab fa-github"></i> View on GitHub <i class="fas fa-arrow-right" style="font-size:.75rem"></i></a>
+          </div>
+          <div class="project-card reveal">
+            <div class="project-card-top"><div class="project-icon proj-green">🗺️</div><span class="project-status status-done">Completed</span></div>
+            <div class="project-title">Learning Path Generator</div>
+            <div class="project-desc">An intelligent tool that generates structured, step-by-step learning roadmaps based on a user's chosen skill or technology, making self-learning more organized and effective.</div>
+            <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">HTML</span><span class="project-tag">CSS</span><span class="project-tag">MySQL</span></div>
+          <a href="https://github.com/hardik9981/learning-path-generator" target="_blank" class="project-link"><i class="fab fa-github"></i> View on GitHub <i class="fas fa-arrow-right" style="font-size:.75rem"></i></a>
+          </div>
+          <div class="project-card reveal">
+            <div class="project-card-top"><div class="project-icon proj-cyan">📍</div><span class="project-status status-wip">Ongoing</span></div>
+            <div class="project-title">Local Workers Finder App</div>
+            <div class="project-desc">An area-based app helping users locate nearby service workers (plumbers, electricians, etc.) based on their location, connecting communities with local talent.</div>
+            <div class="project-tags"><span class="project-tag">HTML</span><span class="project-tag">CSS</span><span class="project-tag">Kotlin</span><span class="project-tag">MySQL</span></div>
+            <!-- <a href="https://github.com/hardik9981" target="_blank" class="project-link"><i class="fab fa-github"></i> View on GitHub <i class="fas fa-arrow-right" style="font-size:.75rem"></i></a> -->
+          </div>
+          <div class="project-card reveal">
+            <div class="project-card-top"><div class="project-icon proj-rose">🔐</div><span class="project-status status-done">Completed</span></div>
+            <div class="project-title">Password Strength Checker</div>
+            <div class="project-desc">A Python cybersecurity tool that evaluates password strength using multiple criteria — entropy, character diversity, common patterns — and provides actionable improvement suggestions.</div>
+            <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">Cybersecurity</span><span class="project-tag">CLI Tool</span></div>
+            <a href="https://github.com/hardik9981/cyber-password-strength-analyzer" target="_blank" class="project-link"><i class="fab fa-github"></i> View on GitHub <i class="fas fa-arrow-right" style="font-size:.75rem"></i></a>
+          </div>
+          <div class="project-card reveal">
+            <div class="project-card-top"><div class="project-icon proj-amber">📡</div><span class="project-status status-done">Completed</span></div>
+            <div class="project-title">Network Packet Sniffer</div>
+            <div class="project-desc">A Python-based network monitoring tool that captures and analyzes live network packets, demonstrating core security monitoring concepts and packet inspection techniques.</div>
+            <div class="project-tags"><span class="project-tag">Python</span><span class="project-tag">Scapy</span><span class="project-tag">Networking</span><span class="project-tag">Security</span></div>
+            <a href="https://github.com/hardik9981/network-packet-sniffer" target="_blank" class="project-link"><i class="fab fa-github"></i> View on GitHub <i class="fas fa-arrow-right" style="font-size:.75rem"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EDUCATION -->
+    <section id="education">
+      <div class="container">
+        <div class="reveal">
+          <div class="section-tag">Education</div>
+          <h2 class="section-title">Academic <span>Journey</span></h2>
+          <div class="divider"></div>
+        </div>
+        <div class="timeline reveal">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-year">2020 — 2021</div>
+              <div class="timeline-degree">10th</div>
+              <div class="timeline-institute">Central H S Cum Inter College, Andar, Siwan, Bihar</div>
+              <span class="timeline-grade"><i class="fas fa-star" style="font-size:.75rem"></i> Percentage: 60%</span>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-year">2021 — 2023</div>
+              <div class="timeline-degree">12th</div>
+              <div class="timeline-institute">Dhajju Singh High School, Bharthuigarh, Siwan, Bihar</div>
+              <span class="timeline-grade"><i class="fas fa-star" style="font-size:.75rem"></i> Percentage: 60%</span>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <div class="timeline-year">2024 — 2028</div>
+              <div class="timeline-degree">Bachelor of Technology (B.Tech) Pursuing
+</div>
+              <div class="timeline-institute">Centurion University of Technology and Management, Paralakhemundi, Gajapati, Odisha</div>
+              <span class="timeline-grade"><i class="fas fa-star" style="font-size:.75rem"></i> CGPA: 6.9</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CERTIFICATIONS -->
+        <section id="certifications">
+          <div class="container">
+            <div class="reveal">
+              <div class="section-tag">Learning</div>
+              <h2 class="section-title">Certi<span>fications</span></h2>
+              <div class="divider"></div>
+            </div>
+            <div class="cert-cards reveal">
+              <div class="cert-card">
+                <div class="cert-icon">🛡️</div>
+                <div>
+                  <div class="cert-title">Cybersecurity Certificate</div>
+                  <div class="cert-meta">Foundations of Information Security</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ACHIEVEMENTS -->
+        <section id="achievements">
+          <div class="container">
+            <div class="reveal">
+              <div class="section-tag">Recognition</div>
+              <h2 class="section-title">Achieve<span>ments</span></h2>
+              <div class="divider"></div>
+            </div>
+            <div class="achieve-grid">
+              <div class="achieve-card reveal">
+                <div class="achieve-emoji">🏆</div>
+                <div>
+                  <div class="achieve-title">Treasure Hunt Competition Winner</div>
+                  <div class="achieve-desc">First place in competitive treasure hunt event demonstrating problem-solving and teamwork under pressure.</div>
+                </div>
+              </div>
+              <div class="achieve-card reveal">
+                <div class="achieve-emoji">⚡</div>
+                <div>
+                  <div class="achieve-title">Hackathon Participant</div>
+                  <div class="achieve-desc">Participated in a hackathon, collaborating with peers to prototype innovative tech solutions within tight deadlines.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section id="contact">
+          <div class="container">
+            <div class="reveal">
+              <div class="section-tag">Get In Touch</div>
+              <h2 class="section-title">Let's <span>Connect</span></h2>
+              <div class="divider"></div>
+            </div>
+            <div class="contact-grid">
+              <div class="contact-info reveal-left">
+                <p class="contact-heading">Reach me directly</p>
+                <a href="tel:+919973888674" class="contact-link-btn">
+                  <div class="contact-link-icon icon-phone"><i class="fas fa-phone"></i></div>
+                  <div class="contact-link-text"><div class="title">Call Me</div><div class="val">+91 99738 88674</div></div>
+                </a>
+                <a href="/cdn-cgi/l/email-protection#bed6dfccdad7d5d9cbcecadf8c89888dfed9d3dfd7d294d0ddd1d3" class="contact-link-btn">
+                  <div class="contact-link-icon icon-email"><i class="fas fa-envelope"></i></div>
+                  <div class="contact-link-text"><div class="title">Send Email</div><div class="val"><span class="__cf_email__" data-cfemail="630b0211070a0804161317025154555023040e020a0f4d000c0e">[email&#160;protected]</span></div></div>
+                </a>
+                <a href="https://github.com/hardik9981" target="_blank" class="contact-link-btn">
+                  <div class="contact-link-icon icon-gh"><i class="fab fa-github"></i></div>
+                  <div class="contact-link-text"><div class="title">GitHub Profile</div><div class="val">github.com/hardik9981</div></div>
+                </a>
+              </div>
+              <div class="contact-form reveal-right">
+                <div id="form-status"></div>
+                <div class="form-group">
+                  <label class="form-label" for="name">// name</label>
+                  <input class="form-input" id="name" type="text" placeholder="Your full name" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="email">// email</label>
+                  <input class="form-input" id="email" type="email" placeholder="your@email.com" />
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="message">// message</label>
+                  <textarea class="form-textarea" id="message" placeholder="What would you like to discuss?"></textarea>
+                </div>
+                <button class="form-submit" id="submitBtn" onclick="sendMessage()">
+                  <i class="fas fa-paper-plane"></i> Send Message
+                </button>
+                <p style="font-size:.78rem;color:var(--text3);margin-top:.5rem;font-family:'JetBrains Mono',monospace;">
+                  // Configure EmailJS keys below for direct email sending
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer>
+          <div class="footer-links">
+            <a href="tel:+919973888674"><i class="fas fa-phone"></i> +91 99738 88674</a>
+            <a href="/cdn-cgi/l/email-protection#2048415244494b47555054411217161360474d41494c0e434f4d"><i class="fas fa-envelope"></i> <span class="__cf_email__" data-cfemail="7a121b081e13111d0f0a0e1b484d4c493a1d171b131654191517">[email&#160;protected]</span></a>
+            <a href="https://github.com/hardik9981" target="_blank"><i class="fab fa-github"></i> github.com/hardik9981</a>
+          </div>
+          <div class="footer-copy">
+            &copy; 2026 <span>Hardik Kumar</span>. Built with ❤️ by <span>Hardik Kumar</span>.<br/>
+            Gajapati, Odisha, India
+          </div>
+        </footer>
+
+        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        /* ============================================================
+           FORMSPREE SETUP (recommended — easiest, no backend needed)
+           ─────────────────────────────────────────────────────────
+           1. Go to https://formspree.io and sign up free
+           2. Click "New Form" → enter hardikgupta2763@gmail.com
+           3. Copy the endpoint URL  (looks like https://formspree.io/f/xxxxxxxx)
+           4. Paste it as the value of FORMSPREE_ENDPOINT below
+           5. Done — messages land directly in your Gmail inbox.
+           ============================================================
+           EMAILJS ALTERNATIVE (if you prefer EmailJS instead):
+           1. Sign up at https://www.emailjs.com
+           2. Add Gmail service → copy SERVICE_ID
+           3. Create template with vars {{from_name}}, {{from_email}}, {{message}}
+           4. Account → API Keys → copy PUBLIC KEY
+           5. Set USE_EMAILJS = true and fill the three EMAILJS_ vars below
+           ============================================================ */
+
+        /* ── CHOOSE YOUR METHOD ─────────────────────────────────── */
+        const USE_EMAILJS = true;   // set true if you want EmailJS instead
+
+        /* ── FORMSPREE (active when USE_EMAILJS = false) ────────── */
+        const FORMSPREE_ENDPOINT = "YOUR_FORMSPREE_ENDPOINT";
+        // e.g. "https://formspree.io/f/xyzabcde"
+
+        /* ── EMAILJS (active when USE_EMAILJS = true) ───────────── */
+        const EMAILJS_PUBLIC_KEY  = "Qv8V4VztEKvMkBxWe";
+        const EMAILJS_SERVICE_ID  = "service_mzlzwkb";
+        const EMAILJS_TEMPLATE_ID = "template_hy7at2x";
+
+        if(USE_EMAILJS){ try { emailjs.init(EMAILJS_PUBLIC_KEY); } catch(e) {} }
+
+        /* ===== TYPING ANIMATION ===== */
+        const typedEl = document.getElementById('typed-text');
+        const phrases = ["I'm Hardik","Frontend Developer","UI/UX Designer","Cybersecurity Engineer"];
+        let pi=0, ci=0, del=false;
+        function typeLoop(){
+          const cur=phrases[pi];
+          if(!del){
+            typedEl.textContent=cur.slice(0,++ci);
+            if(ci===cur.length){del=true;setTimeout(typeLoop,1600);return;}
+            setTimeout(typeLoop,75);
+          }else{
+            typedEl.textContent=cur.slice(0,--ci);
+            if(ci===0){del=false;pi=(pi+1)%phrases.length;setTimeout(typeLoop,300);return;}
+            setTimeout(typeLoop,40);
+          }
+        }
+        typeLoop();
+
+        /* ===== PARTICLES ===== */
+        const canvas=document.getElementById('particles');
+        const ctx=canvas.getContext('2d');
+        function resize(){canvas.width=innerWidth;canvas.height=innerHeight;}
+        resize();window.addEventListener('resize',resize);
+        const pts=Array.from({length:60},()=>({
+          x:Math.random()*innerWidth,y:Math.random()*innerHeight,
+          r:Math.random()*1.5+.4,vx:(Math.random()-.5)*.3,vy:(Math.random()-.5)*.3,
+          o:Math.random()*.4+.1,c:Math.random()>.5?'99,102,241':'34,197,94'
+        }));
+        (function frame(){
+          ctx.clearRect(0,0,canvas.width,canvas.height);
+          pts.forEach(p=>{
+            p.x+=p.vx;p.y+=p.vy;
+            if(p.x<0)p.x=canvas.width;if(p.x>canvas.width)p.x=0;
+            if(p.y<0)p.y=canvas.height;if(p.y>canvas.height)p.y=0;
+            ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+            ctx.fillStyle=`rgba(${p.c},${p.o})`;ctx.fill();
+          });
+          for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){
+            const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);
+            if(d<120){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);
+            ctx.strokeStyle=`rgba(99,102,241,${.07*(1-d/120)})`;ctx.lineWidth=.5;ctx.stroke();}
+          }
+          requestAnimationFrame(frame);
+        })();
+
+        /* ===== NAVBAR ===== */
+        window.addEventListener('scroll',()=>document.getElementById('navbar').classList.toggle('scrolled',scrollY>50));
+
+        /* ===== HAMBURGER ===== */
+        const ham=document.getElementById('hamburger');
+        const mob=document.getElementById('mobileMenu');
+        ham.addEventListener('click',()=>{ham.classList.toggle('open');mob.classList.toggle('open');document.body.style.overflow=mob.classList.contains('open')?'hidden':'';});
+        function closeMobile(){ham.classList.remove('open');mob.classList.remove('open');document.body.style.overflow='';}
+
+        /* ===== SCROLL REVEAL ===== */
+        const reveals=document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+        const obs=new IntersectionObserver(entries=>{
+          entries.forEach(e=>{if(e.isIntersecting){const d=e.target.dataset.delay||0;setTimeout(()=>e.target.classList.add('visible'),+d);obs.unobserve(e.target);}});
+        },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+        document.querySelectorAll('.projects-grid,.achieve-grid').forEach(g=>{
+          g.querySelectorAll('.reveal').forEach((el,i)=>{el.dataset.delay=i*120;});
+        });
+        reveals.forEach(el=>obs.observe(el));
+
+        /* ===== CONTACT FORM ===== */
+        function sendMessage(){
+          const name    = document.getElementById('name').value.trim();
+          const email   = document.getElementById('email').value.trim();
+          const message = document.getElementById('message').value.trim();
+          const btn     = document.getElementById('submitBtn');
+
+          /* ── Validation ── */
+          if(!name||!email||!message){
+            showStatus('error','⚠️ Please fill in all fields.');return;
+          }
+          if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+            showStatus('error','⚠️ Enter a valid email address.');return;
+          }
+
+          btn.disabled=true;
+          btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Sending…';
+
+          /* ── EMAILJS path ── */
+          if(USE_EMAILJS){
+            emailjs.send(EMAILJS_SERVICE_ID,EMAILJS_TEMPLATE_ID,{
+              name:name,
+              email:email,
+              message:message
+            })
+            .then(()=>{
+              showStatus('success','✅ Message sent! I\'ll get back to you soon.');
+              document.getElementById('name').value='';
+              document.getElementById('email').value='';
+              document.getElementById('message').value='';
+            })
+            .catch((err)=>{
+              console.error('EmailJS Error:', err);
+              showStatus('error','❌ Failed to send. Please email hardikgupta2763@gmail.com directly.');
+            })
+            .finally(()=>{
+              btn.disabled=false;
+              btn.innerHTML='<i class="fas fa-paper-plane"></i> Send Message';
+            });
+            return;
+          }
+
+          /* ── FORMSPREE path ── */
+          if(FORMSPREE_ENDPOINT==="https://formspree.io/f/mqedrokv"){
+            showStatus('error','⚠️ Paste your Formspree endpoint in the script config.');
+            btn.disabled=false;btn.innerHTML='<i class="fas fa-paper-plane"></i> Send Message';
+            return;
+          }
+          fetch(FORMSPREE_ENDPOINT,{
+              method:'POST',
+              headers:{'Content-Type':'application/json','Accept':'application/json'},
+              body:JSON.stringify({
+                name:name,
+                email:email,
+                message:message,
+                _replyto:email,
+                _subject:'Portfolio message from '+name
+              })
+            })
+            .then(res=>{
+              if(res.ok){
+                showStatus('success','✅ Message sent! I\'ll get back to you soon.');
+                document.getElementById('name').value='';
+                document.getElementById('email').value='';
+                document.getElementById('message').value='';
+              }else{
+                return res.json().then(d=>{throw new Error(d.error||'Server error');});
+              }
+            })
+            .catch(err=>{
+              console.error(err);
+              showStatus('error','❌ Could not send. Please email hardikgupta2763@gmail.com directly.');
+            })
+            .finally(()=>{
+              btn.disabled=false;
+              btn.innerHTML='<i class="fas fa-paper-plane"></i> Send Message';
+            });
+        }
+        function showStatus(type,text){
+          const s=document.getElementById('form-status');
+          s.textContent=text;
+          s.className=type;
+          s.style.display='block';
+          setTimeout(()=>{ s.style.display='none'; },5000);
+        }
+
+        /* Enter key submits from name/email fields */
+        document.getElementById('name').addEventListener('keydown',  e=>{ if(e.key==='Enter') sendMessage(); });
+        document.getElementById('email').addEventListener('keydown', e=>{ if(e.key==='Enter') sendMessage(); });
+        </script>
+</body>
+</html>
