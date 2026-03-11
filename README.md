@@ -6,7 +6,7 @@ A modern, responsive developer portfolio website showcasing my work in **Fronten
 
 ## 🚀 Live Demo
 
-[View Live Site](https://yourusername.github.io/your-repo-name)
+[View Live Site](https://hardik9981.github.io/hardik-portfolio)
 
 ## ✨ Features
 
